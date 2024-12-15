@@ -18,18 +18,18 @@ function Form({ aboutValues, aboutChange }) {
     console.log("currently editing");
   };
 
-  const [education, setEducation] = useState({
-    isOpen: false,
-    degreeTitle: "Bachelor of Arts, Philosophy",
-    institutionName: "Harvard University",
-    dateStart: "",
-    dateEnd: "",
-  });
+  // const [education, setEducation] = useState({
+  //   isOpen: false,
+  //   degreeTitle: "Bachelor of Arts, Philosophy",
+  //   institutionName: "Harvard University",
+  //   dateStart: "",
+  //   dateEnd: "",
+  // });
 
-  function educationHandler(event, obj) {
-    event.preventDefault();
-    setEducation({ ...education, ...obj });
-  }
+  // function educationHandler(event, obj) {
+  //   event.preventDefault();
+  //   setEducation({ ...education, ...obj });
+  // }
 
   return (
     <div className="form-container-inside">

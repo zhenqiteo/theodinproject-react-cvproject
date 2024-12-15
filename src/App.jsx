@@ -16,19 +16,22 @@ function App() {
       "blabla opopo elkko dek koko currently on craigslist but also working for a crazy red-haired lazy called Elizabeth",
   });
 
-  // State for education entries
-  const [educationEntries, setEducationEntries] = useState([
-    {
-      degreeTitle: "Bachelor of Arts, Philosophy",
-      institutionName: "Harvard University",
-      dateStart: "2015-08-01",
-      dateEnd: "2019-05-15",
-    },
-  ]);
+  // State to STORE education entries
+  // const [educationEntries, setEducationEntries] = useState([
+  //   {
+  //     degreeTitle: "Bachelor of Arts, Philosophy",
+  //     institutionName: "Harvard University",
+  //     dateStart: "2015-08-01",
+  //     dateEnd: "2019-05-15",
+  //   },
+  // ]);
 
-  // Handler to add new education entry
-  const addEducationHandler = (newEducation) => {
-    setEducationEntries((prevEntries) => [...prevEntries, newEducation]);
+  const [educationEntries, setEducationEntries] = useState([]);
+
+  // function to add new education entry
+  const addEducationEntry = (newEntry) => {
+    // create an array with existing entries and the new entry
+    setEducationEntries([...educationEntries, newEntry]);
   };
 
   // State for new educationform input?
@@ -59,7 +62,7 @@ function App() {
           <EducationForm
             educationValues={education}
             educationChange={educationHandler}
-            addEducation={addEducationHandler}
+            onAddEducation={addEducationEntry}
           />
         </div>
         <div className="resume-container">
@@ -69,9 +72,10 @@ function App() {
             width="300px"
           />
           <About values={about} />
-          {educationEntries.map((entry, index) => (
+          {/* {educationEntries.map((entry, index) => (
             <EducationRender key={index} values={entry} />
-          ))}
+          ))} */}
+          <EducationRender entries={educationEntries} />
         </div>
         {/* <Contact title="this" type="primary" /> */}
       </div>

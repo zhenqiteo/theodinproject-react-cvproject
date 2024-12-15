@@ -1,106 +1,57 @@
 import React, { useState } from "react";
-import Button from "./Button";
-import "../styles/EducationForm.css";
 
-export default function EducationForm({ educationValues, educationChange }) {
-  const [formData, setFormData] = useState(educationValues);
-
-  // Handle changes to form input fields
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+function EducationForm({ onAddEducation }) {
+  // Local state for form fields
+  const [school, setSchool] = useState("");
+  const [degree, setDegree] = useState("");
+  const [graduationYear, setGraduationYear] = useState("");
 
   // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    addEducation(formData); // Add the new education entry
-    setFormData({
-      degreeTitle: "",
-      institutionName: "",
-      dateStart: "",
-      dateEnd: "",
-    }); // Reset the form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Create an education entry object
+    const newEntry = {
+      school,
+      degree,
+      graduationYear,
+    };
+
+    // Call the function passed from App.js to add the entry
+    onAddEducation(newEntry);
+
+    // Clear form fields after submission
+    setSchool("");
+    setDegree("");
+    setGraduationYear("");
   };
+
   return (
-    <>
-      <h3>Education</h3>
-      <form onSubmit={handleSubmit}>
-        {educationForms.map((form, index) => (
-          <div key={index} className="education-form">
-            <div className="field">
-              <label htmlFor={`degreeTitle-${index}`}>Title of Study: </label>
-              <input
-                type="text"
-                id={`degreeTitle-${index}`}
-                placeholder={educationValues.degreeTitle}
-                onChange={(event) =>
-                  handleChange(index, "degreeTitle", event.target.value)
-                }
-              />
-            </div>
-            <div className="field">
-              <label htmlFor={`institutionName-${index}`}>
-                Institution Name:{" "}
-              </label>
-              <input
-                type="text"
-                id={`institutionName-${index}`}
-                placeholder="Harvard University"
-                onChange={(event) =>
-                  handleChange(index, "institutionName", event.target.value)
-                }
-              />
-            </div>
-            <div className="field">
-              <label htmlFor={`dateStart-${index}`}>Date Start: </label>
-              <input
-                type="date"
-                id={`institutionName-${index}`}
-                onChange={(event) =>
-                  handleEducationChange(index, "dateStart", event.target.value)
-                }
-              />
-            </div>
-            <div className="field">
-              <label htmlFor={`dateEnd-${index}`}>Date Graduated: </label>
-              <input
-                type="date"
-                id={`dateEnd-${index}`}
-                onChange={(event) =>
-                  handleEducationChange(event, "dateEnd", event.target.value)
-                }
-              />
-            </div>
-          </div>
-        ))}
-        {/* <div className="field">
-          <label htmlFor="dateStart">Date Start: </label>
-          <input
-            type="date"
-            id="dateStart"
-            onChange={(event) =>
-              educationChange(event, { dateStart: event.target.value })
-            }
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="dateEnd">Date Graduated: </label>
-          <input
-            type="date"
-            id="dateEnd"
-            onChange={(event) =>
-              educationChange(event, { dateEnd: event.target.value })
-            }
-          />
-        </div> */}
-        <Button onClick={handleAddEducation} text="add education exp" />
-      </form>
-    </>
-    // <Button text="add educational experience" onClick={handleAddEducation} />
-    // <Button text="save" />
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={school}
+        onChange={(e) => setSchool(e.target.value)}
+        placeholder="School Name"
+        required
+      />
+      <input
+        type="text"
+        value={degree}
+        onChange={(e) => setDegree(e.target.value)}
+        placeholder="Degree"
+        required
+      />
+      <input
+        type="text"
+        value={graduationYear}
+        onChange={(e) => setGraduationYear(e.target.value)}
+        placeholder="Graduation Year"
+        required
+      />
+      <button type="submit">Add Education</button>
+    </form>
   );
 }
+
+export default EducationForm;
