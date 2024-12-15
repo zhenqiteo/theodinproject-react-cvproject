@@ -1,0 +1,7 @@
+.round-button {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 4px 8px;
+  background-color: lightgreen;
+  margin-right: 5px;
+}

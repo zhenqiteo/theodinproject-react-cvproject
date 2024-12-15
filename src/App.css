@@ -1,0 +1,36 @@
+.app-container {
+  /* display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100vw;
+  */
+  display: flex;
+  height: 100vh;
+}
+
+.form-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form-container::-webkit-scrollbar {
+  /* background: yellow; */
+  width: 10px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  /* background: black; */
+  width: 5px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background: lightgreen;
+  border-radius: 10px;
+}
+
+.resume-container {
+  width: 300px;
+  position: sticky;
+  top: 0;
+  padding: 10% 5%;
+}

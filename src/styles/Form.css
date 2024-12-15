@@ -1,0 +1,22 @@
+.form-container-inside {
+  background-color: rgb(160, 143, 123);
+  padding: 10px;
+}
+.form-container::-webkit-scrollbar {
+  /* background: yellow; */
+  width: 10px;
+}
+
+.form-container::-webkit-scrollbar-track {
+  /* background: black; */
+  width: 5px;
+}
+
+.form-container::-webkit-scrollbar-thumb {
+  background: lightgreen;
+  border-radius: 10px;
+}
+
+.field {
+  width: 100%;
+}
